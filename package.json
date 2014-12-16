@@ -1,0 +1,36 @@
+{
+  "name": "ydr-log",
+  "version": "1.0.0",
+  "private": false,
+  "description": "express log for ydr.me",
+  "scripts": {},
+  "preferGlobal": false,
+  "bin": {},
+  "main": "index.js",
+  "keywords": [
+    "cloudcome",
+    "ydr.me",
+    "express",
+    "log",
+    "nodejs"
+  ],
+  "author": {
+    "name": "cloudcome",
+    "email": "cloudcome@163.com",
+    "url": "http://ydr.me"
+  },
+  "homepage": "https://github.com/cloudcome/nodejs-ydr-log",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudcome/nodejs-ydr-log"
+  },
+  "bugs": {
+    "url": "https://github.com/cloudcome/nodejs-ydr-log/issues"
+  },
+  "dependencies": {
+    "emailjs": "^0.3.12",
+    "ydr-util": "^1.11.0"
+  },
+  "devDependencies": {},
+  "licenses": "MIT"
+}
