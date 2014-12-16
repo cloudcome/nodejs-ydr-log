@@ -1,6 +1,6 @@
 {
   "name": "ydr-log",
-  "version": "1.0.99",
+  "version": "1.0.121",
   "private": false,
   "description": "express log for ydr.me",
   "scripts": {},

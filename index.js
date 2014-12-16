@@ -22,11 +22,11 @@ var logDefaults = {
 };
 // 邮件发送服务器配置
 var smtpDefaults = {
-    port : '465',
-    ssl : true,
-    host : 'smtp.qq.com',
-    password : 'smtp_password',
-    user : 'smtp_username'
+    port: '465',
+    ssl: true,
+    host: 'smtp.qq.com',
+    password: 'smtp_password',
+    user: 'smtp_username'
 };
 // 邮件配置
 var emailDefaults = {
@@ -50,7 +50,6 @@ var log = function (options) {
 var smtp;
 
 
-
 /**
  * 接收错误
  * @param err {Object} 错误对象
@@ -63,21 +62,21 @@ log.holdError = function (err) {
 
 
 /**
+ * 初始化邮件发送配置
+ * @param options
+ */
+log.initEmail = function (options) {
+    dato.extend(emailDefaults, options);
+};
+
+
+/**
  * 初始化邮件服务器配置
  * @param options
  */
 log.initSmtp = function (options) {
     dato.extend(smtpDefaults, options);
     smtp = emailjs.server.connect(smtpDefaults);
-};
-
-
-/**
- * 初始化邮件发送配置
- * @param options
- */
-log.initEmail = function (options) {
-    dato.extend(emailDefaults, options);
 };
 
 
