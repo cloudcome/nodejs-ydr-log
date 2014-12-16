@@ -1,23 +1,9 @@
 # ydr-log
 ## usage
-### log
+### smtp
 ```
 var log = require('ydr-util');
 
-// 记录日志，尽量放在路由的最后
-app.use(log({
-    // 运行环境，默认为开发
-    env: 'pro',
-    // 存放路径
-    path: null,
-    // YYYY年MM月DD日 HH:mm:ss.SSS 星期e a
-    name: './YYYY/MM/YYYY-MM-DD'
-}));
-```
-
-
-### smtp
-```
 // 初始化邮件服务器
 log.initSmtp({
     port : '465',
@@ -37,6 +23,20 @@ log.initEmail({
     to: '',
     subject: '服务器错误'
 });
+```
+
+
+### log
+```
+// 记录日志，尽量放在路由的最后
+app.use(log({
+    // 运行环境，默认为开发
+    env: 'pro',
+    // 存放路径
+    path: null,
+    // YYYY年MM月DD日 HH:mm:ss.SSS 星期e a
+    name: './YYYY/MM/YYYY-MM-DD'
+}));
 ```
 
 
