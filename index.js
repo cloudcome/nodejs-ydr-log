@@ -159,8 +159,11 @@ function _log(err, req, res, next) {
                 data: '<pre>' + txt + '</pre>',
                 alternative: true
             }]
-        }, function () {
-            // ignore
+        }, function (err) {
+            if(err){
+                console.log('邮件发送失败：');
+                console.log(err.message);
+            }
         });
     }
 
