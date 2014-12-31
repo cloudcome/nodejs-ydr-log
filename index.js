@@ -22,11 +22,13 @@ var logDefaults = {
 };
 // 邮件发送服务器配置
 var smtpDefaults = {
-    port: '465',
-    ssl: true,
-    host: 'smtp.qq.com',
-    password: 'smtp_password',
-    user: 'smtp_username'
+    auth: {
+        user: "smtp_user",
+        pass: "smtp_password"
+    },
+    service: "smtp_host",
+    port: "smtp_port",
+    secure: true
 };
 // 邮件配置
 var emailDefaults = {
