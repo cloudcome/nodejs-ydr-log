@@ -6,7 +6,7 @@
 
 'use strict';
 
-var emailjs = require('emailjs');
+var nodemailer = require('nodemailer');
 var dato = require('ydr-util').dato;
 var date = require('ydr-util').date;
 var typeis = require('ydr-util').typeis;
@@ -76,7 +76,7 @@ log.initEmail = function (options) {
  */
 log.initSmtp = function (options) {
     dato.extend(smtpDefaults, options);
-    smtp = emailjs.server.connect(smtpDefaults);
+    smtp = nodemailer.createTransport(smtpDefaults);
 };
 
 
@@ -151,14 +151,11 @@ function _log(err, req, res, next) {
     }
 
     if (smtp) {
-        smtp.send({
+        smtp.sendMail({
             from: emailDefaults.from,
             to: emailDefaults.to,
             subject: emailDefaults.subject + ' ' + time,
-            attachment: [{
-                data: '<pre>' + txt + '</pre>',
-                alternative: true
-            }]
+            html: '<pre>' + txt + '</pre>'
         }, function (err) {
             if (err) {
                 console.log('邮件发送失败：');
