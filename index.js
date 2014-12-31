@@ -109,20 +109,20 @@ module.exports = log;
 function _log(err, req, res, next) {
     var time = date.format('YYYY年MM月DD日 HH:mm:ss.SSS 星期e a');
     var request = req ? req.method + ' ' + (err ? '500' : '404') + ' ' + req.url : '';
-    var ip = req ? req.ip || req.headers['x-forwarded-for'] || '0.0.0.0' : '';
+    var ip = req ? req.headers['x-forwarded-for'] || req.ip : '0.0.0.0';
     var query = req ? JSON.stringify(req.query || {}, null, 4) : '';
     var body = req ? JSON.stringify(req.body || {}, null, 4) : '';
     var name = date.format(logDefaults.name);
     var suffix = err ? '-500.log' : '-404.log';
     var file = name + suffix;
     var txt =
-        '##################################################################\n' +
-        'time: ' + time + '\n' +
-        (request ? 'request: ' + request + '\n' : '') +
-        (req ? 'ua: ' + req.headers['user-agent'] + '\n' : '') +
-        (req ? 'ip: ' + ip + '\n' : '') +
-        (req ? 'query: \n' + query + '\n' : '') +
-        (req ? 'body: \n' + body + '\n' : '');
+            '##################################################################\n' +
+            'time: ' + time + '\n' +
+            (request ? 'request: ' + request + '\n' : '') +
+            (req ? 'ua: ' + req.headers['user-agent'] + '\n' : '') +
+            (req ? 'ip: ' + ip + '\n' : '') +
+            (req ? 'query: \n' + query + '\n' : '') +
+            (req ? 'body: \n' + body + '\n' : '');
 
     if (err) {
         txt +=
@@ -160,7 +160,7 @@ function _log(err, req, res, next) {
                 alternative: true
             }]
         }, function (err) {
-            if(err){
+            if (err) {
                 console.log('邮件发送失败：');
                 console.log(err.message);
             }
