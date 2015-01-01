@@ -1,6 +1,6 @@
 {
   "name": "ydr-log",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "private": false,
   "description": "express log for ydr.me",
   "scripts": {},
@@ -28,8 +28,7 @@
     "url": "https://github.com/cloudcome/nodejs-ydr-log/issues"
   },
   "dependencies": {
-    "nodemailer": "^1.3.0",
-    "ydr-util": "^1.11.0"
+    "ydr-util": "^1.11.5"
   },
   "devDependencies": {},
   "licenses": "MIT"

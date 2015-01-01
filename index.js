@@ -6,7 +6,6 @@
 
 'use strict';
 
-var nodemailer = require('nodemailer');
 var dato = require('ydr-util').dato;
 var date = require('ydr-util').date;
 var typeis = require('ydr-util').typeis;
@@ -19,16 +18,6 @@ var logDefaults = {
     path: null,
     // YYYY年MM月DD日 HH:mm:ss.SSS 星期e a
     name: './YYYY/MM/YYYY-MM-DD',
-};
-// 邮件发送服务器配置
-var smtpDefaults = {
-    auth: {
-        user: "smtp_user",
-        pass: "smtp_password"
-    },
-    service: "smtp_host",
-    port: "smtp_port",
-    secure: true
 };
 // 邮件配置
 var emailDefaults = {
@@ -76,9 +65,8 @@ log.initEmail = function (options) {
  * 初始化邮件服务器配置
  * @param options
  */
-log.initSmtp = function (options) {
-    dato.extend(smtpDefaults, options);
-    smtp = nodemailer.createTransport(smtpDefaults);
+log.initSmtp = function (_smtp) {
+    smtp = _smtp;
 };
 
 
@@ -152,7 +140,7 @@ function _log(err, req, res, next) {
         console.log(txt);
     }
 
-    if (smtp) {
+    if (smtp && smtp.sendMail) {
         smtp.sendMail({
             from: emailDefaults.from,
             to: emailDefaults.to,
