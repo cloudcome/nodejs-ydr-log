@@ -161,7 +161,7 @@ function _log(err, req, res, next) {
         }, function (err) {
             if (err) {
                 console.log('邮件发送失败：');
-                console.log(err.message);
+                console.error(err);
             }
         });
     }
